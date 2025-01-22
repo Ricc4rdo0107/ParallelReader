@@ -12,7 +12,7 @@ class BigFileLoader:
         with open(self.filename, "r", newline="") as fi: #this shit(fuck microsoft)
             fi.seek(start)
             new_content = fi.read(end-start)
-            manager.append((idx, new_content)
+            manager.append((idx, new_content))
 
     def get_content(self, num_chunks: int) -> str:
         chunks_size = ceil(self.size / num_chunks)
@@ -36,4 +36,4 @@ class BigFileLoader:
         
         print(list(sorted(content, key=lambda x:x[0])))
 
-        return "".join(x for _, x in sorted(content, key=lambda x:x[0]))
+        return "".join(x for _, x, in sorted(content, key=lambda x:x[0]))
