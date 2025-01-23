@@ -9,7 +9,7 @@ class BigFileLoader:
         self.size = os.path.getsize(filename)
     
     def _process_chunk(self, start, end, manager, idx):
-        with open(self.filename, "r", newline="") as fi: #this shit(fuck microsoft)
+        with open(self.filename, "r", newline="" if os.name == "nt" else None) as fi: #this shit(fuck microsoft)
             fi.seek(start)
             new_content = fi.read(end-start)
             manager.append((idx, new_content))
